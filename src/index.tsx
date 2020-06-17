@@ -1,12 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./css/style.css";
-import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from "./pages/Home";
+import ChatRoom from "./pages/ChatRoom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/chat-room/:room/:name" component={ChatRoom} />
+      </Switch>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
