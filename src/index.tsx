@@ -5,15 +5,18 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import ChatRoom from "./pages/ChatRoom";
+import { SocketContext } from "./hooks/useSocket";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/chat-room/:room/:name" component={ChatRoom} />
-      </Switch>
-    </BrowserRouter>
+    <SocketContext>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/chat-room/:room/:name" component={ChatRoom} />
+        </Switch>
+      </BrowserRouter>
+    </SocketContext>
   </React.StrictMode>,
   document.getElementById("root")
 );
