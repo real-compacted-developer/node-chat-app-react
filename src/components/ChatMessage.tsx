@@ -13,7 +13,7 @@ const ChatMessage: React.FC<{ msg: ChatMessagePayload }> = ({ msg }) => {
       <li className="message">
         <div className="message__title">
           <h4>{msg.from}</h4>
-          <span>{format(msg.createAt, "HH:mm a")}</span>
+          <span>시간</span>
         </div>
         <div className="message__body">
           <p>{msg.text}</p>
