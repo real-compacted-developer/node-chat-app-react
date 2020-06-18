@@ -1,20 +1,22 @@
 import React from "react";
+import { format } from "date-fns";
 
-interface ChatMessageProps {
+export interface ChatMessagePayload {
   readonly from: string;
-  readonly time: string;
+  readonly text: string;
+  readonly createAt: number;
 }
 
-const ChatMessage: React.FC<ChatMessageProps> = ({ from, time, children }) => {
+const ChatMessage: React.FC<{ msg: ChatMessagePayload }> = ({ msg }) => {
   return (
     <>
       <li className="message">
         <div className="message__title">
-          <h4>{from}</h4>
-          <span>{time}</span>
+          <h4>{msg.from}</h4>
+          <span>{format(msg.createAt, "HH:mm a")}</span>
         </div>
         <div className="message__body">
-          <p>{children}</p>
+          <p>{msg.text}</p>
         </div>
       </li>
     </>
